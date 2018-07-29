@@ -1,7 +1,7 @@
 #!C:\Users\Vivek\PycharmProjects\test\venv\Scripts\python.exe
 
 import pyautogui, time
- 
+#lol
 while 1:
     x,y=pyautogui.position()
     positionStr = 'X: ' + str(x).rjust(4) + ' Y: ' + str(y).rjust(4)
