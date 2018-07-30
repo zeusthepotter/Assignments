@@ -2,10 +2,10 @@ import pickle,os
 
 
 class Ticket:
-    name=''
-    age=int()
-    seat=int()
-    sex=''
+    # name=''
+    # age=int()
+    # seat=int()
+    # sex=''
       
     def __init__(self,name=None,age=None,sex=None,seat=None):
         self.name=name
@@ -40,10 +40,11 @@ def bookTicket():
 
 
 def searchTicket():
-    pickle_in=open('database','rb+')
     try:
+        pickle_in=open('database','rb+')
         data=pickle.load(pickle_in)
     except:
+        print('No tickets have been booked yet!')
         return False
     pickle_in.close()
     name=input('Enter your name (Should be exactly the same as in the booked ticket):\n')
@@ -57,9 +58,10 @@ def searchTicket():
 
 
 def deleteTicket():
-    pickle_in=open('database','ab+')
     pickle_in.seek(0)
     try:
+        pickle_in=open('database','ab+')
+        pickle_in.seek(0)
         data=pickle.load(pickle_in)
     except:
         print('No tickets have been booked yet!')
@@ -88,8 +90,10 @@ def deleteTicket():
         
 
 while True:
-    # os.system('cls')
-    print('Welcome to Railway Ticket Reservation System!\n\n1. Book railway ticket\n2. Search ticket\n3. Delete Ticket\n4. Exit')
+    print("Enter any key to go to the main menu.")
+    input()
+    os.system('cls')
+    print('\n\nWelcome to Railway Ticket Reservation System!\n\n1. Book railway ticket\n2. Search ticket\n3. Delete Ticket\n4. Exit')
     i=int(input())
     if i==1:
         if not bookTicket():
