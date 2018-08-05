@@ -2,11 +2,7 @@ import pickle,os
 
 
 class Ticket:
-    # name=''
-    # age=int()
-    # seat=int()
-    # sex=''
-      
+         
     def __init__(self,name=None,age=None,sex=None,seat=None):
         self.name=name
         self.age=age
@@ -82,38 +78,48 @@ def deleteTicket():
             pickle_out.close()
             print('Ticket deleted successfully!')  
             return True  
-    print('No ticket found with the entered details')
+    print('No ticket found with the entered details!')
     return False
 
 
 
         
+def viewTickets():
+    try:
+        pickle_in=open('database','rb+')
+        data=pickle.load(pickle_in)
+    except:
+        print('No tickets have been booked yet!')
+        return False
+    pickle_in.close()
+    found=False
+    for d in data:
+        if d.name:
+            found=True
+            print('\nName = ',d.name,'\nAge = ',d.age,'\nSex = ',d.sex,'\nSeat Number =',d.seat)
+    if found==False:
+        print('\nNo tickets have been booked yet!\n')
+    return True
+
+
 
 while True:
     print("Enter any key to go to the main menu.")
     input()
     os.system('cls')
-    print('\n\nWelcome to Railway Ticket Reservation System!\n\n1. Book railway ticket\n2. Search ticket\n3. Delete Ticket\n4. Exit')
-    i=int(input())
+    print('\n\nWelcome to Railway Ticket Reservation System!\n\n1. Book railway ticket\n2. Search ticket\n3. Delete Ticket\n4. View All Tickets\n5. Exit\n')
+    i=input()
     if i==1:
         if not bookTicket():
             print('Sorry! No seats are available.')
         
-    elif i==2:
+    elif i=='2':
         searchTicket()
-    elif i==3:
+    elif i=='3':
         deleteTicket()
-    elif i==4:
+    elif i=='4':
+        viewTickets()
+    else:
         break
     
 
-
-# example_dict = {1:"6",2:"2",3:"f"}
- 
-# pickle_out = open("dict.pickle","wb")
-# pickle.dump(example_dict, pickle_out)
-# pickle_out.close()
-# pickle_in = open("dict.pickle","rb")
-# example_dict = pickle.load(pickle_in)
-# print(example_dict)
-# print(example_dict[3])
