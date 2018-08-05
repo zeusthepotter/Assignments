@@ -51,7 +51,6 @@ def searchTicket():
 
 
 def deleteTicket():
-    pickle_in.seek(0)
     try:
         pickle_in=open('database','ab+')
         pickle_in.seek(0)
