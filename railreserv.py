@@ -103,7 +103,7 @@ while True:
     os.system('cls')
     print('\n\nWelcome to Railway Ticket Reservation System!\n\n1. Book railway ticket\n2. Search ticket\n3. Delete Ticket\n4. View All Tickets\n5. Exit\n')
     i=input()
-    if i==1:
+    if i=='1':
         if not bookTicket():
             print('Sorry! No seats are available.')
         
