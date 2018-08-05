@@ -1,6 +1,5 @@
 import pickle,os 
 
-
 class Ticket:
          
     def __init__(self,name=None,age=None,sex=None,seat=None):
@@ -26,8 +25,6 @@ def bookTicket():
             t=Ticket(name,age,sex,n+1)
             print(t.name)
             data[n]=t
-            # for i in data:
-            #     print(i.name)
             pickle_out=open('database','wb+')
             pickle.dump(data,pickle_out)
             pickle_out.close()
@@ -80,8 +77,6 @@ def deleteTicket():
             return True  
     print('No ticket found with the entered details!')
     return False
-
-
 
         
 def viewTickets():
